@@ -1,0 +1,4 @@
+PS C:\Users\Talal Afzaal\Desktop\Coursera Final Projects\tax-calculator-main> docker ps
+CONTAINER ID   IMAGE            COMMAND                  CREATED          STATUS          PORTS                                     NAMES
+b352abc83943   tax-calculator   "/docker-entrypoint.…"   18 seconds ago   Up 17 seconds   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   tax-calculator-container
+PS C:\Users\Talal Afzaal\Desktop\Coursera Final Projects\tax-calculator-main>
