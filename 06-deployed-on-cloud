@@ -1,0 +1,11 @@
+C:\Users\Talal Afzaal>ibmcloud ce application create --name tax-calculator --image us.icr.io/talal-tax-calculator/tax-calculator:1.0 --registry-secret icr-secret
+
+Creating application 'tax-calculator'...
+Creating revision 'tax-calculator-00001'...
+Waiting for application 'tax-calculator' to become ready...
+OK
+
+Name:                   tax-calculator
+ID:                     abc12345-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Status:                 Ready
+URL:                    https://tax-calculator.xxxxx.us-south.codeengine.appdomain.cloud

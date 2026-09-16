@@ -1,20 +1,7 @@
-# Use a lightweight official Node.js image
-FROM node:18-alpine
+FROM nginx
 
-# Set working directory inside the container
-WORKDIR /app
-
-# Copy dependency manifests first (better layer caching)
-COPY package*.json ./
-
-# Install only production dependencies for a smaller image
-RUN npm install --omit=dev
-
-# Copy the rest of the application source
-COPY . .
-
-# App listens on this port
-EXPOSE 8080
-
-# Start the app
-CMD ["npm", "start"]
+COPY favicon.ico /usr/share/nginx/html/favicon.ico
+COPY index.html /usr/share/nginx/html/index.html
+COPY script.js /usr/share/nginx/html/script.js
+COPY style.css /usr/share/nginx/html/style.css
+COPY taxCalculator.js /usr/share/nginx/html/taxCalculator.js
