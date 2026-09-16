@@ -1,0 +1,39 @@
+PS C:\Users\Talal Afzaal\Desktop\Coursera Final Projects\tax-calculator-main> docker build -t tax-calculator .
+[+] Building 78.5s (11/11) FINISHED                                                                                                       docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                                      0.0s
+ => => transferring dockerfile: 305B                                                                                                                      0.0s
+ => [internal] load metadata for docker.io/library/nginx:latest                                                                                           6.2s
+ => [internal] load .dockerignore                                                                                                                         0.0s
+ => => transferring context: 103B                                                                                                                         0.0s
+ => [1/6] FROM docker.io/library/nginx:latest@sha256:d0d674272be3be36f9a13d79194fa0db5aa630ab3ede9bec459d12f67370aaef                                    70.2s
+ => => resolve docker.io/library/nginx:latest@sha256:d0d674272be3be36f9a13d79194fa0db5aa630ab3ede9bec459d12f67370aaef                                     0.1s
+ => => sha256:3fe5ab3f861484e72b05fcb727f2082cf06a641349ffaf604f1f23c2628aef84 1.40kB / 1.40kB                                                            1.9s
+ => => sha256:c06193164a252df3a3a1bc59cd254766ea522e78d5d1cb136e7e63c5b57b781b 0B / 1.21kB                                                               71.9s
+ => => sha256:0478569e858e7b6eb1130889b9be06b1e81383838634c047685b2d68816eba81 956B / 956B                                                                1.9s
+ => => sha256:76225461b7d3207712ea9bcc97711e397bdb9df17960dc349ff0486cce38b75e 404B / 404B                                                                2.1s
+ => => sha256:6310eb16bf4251731feab01e8f633bf5e2d75a657ccad97f420b1f83cce457be 29.79MB / 29.79MB                                                         44.1s
+ => => sha256:ab606a349520ed616d5ddee4e3c135760086a580a7841720af3d034832bdef95 628B / 628B                                                                1.2s
+ => => sha256:9302921ce9b3730380e1963eb2e8a695f872814d07628eb3ab21852c475018ec 36.52MB / 36.52MB                                                         66.0s
+ => => extracting sha256:6310eb16bf4251731feab01e8f633bf5e2d75a657ccad97f420b1f83cce457be                                                                 2.0s
+ => => extracting sha256:9302921ce9b3730380e1963eb2e8a695f872814d07628eb3ab21852c475018ec                                                                 1.6s
+ => => extracting sha256:ab606a349520ed616d5ddee4e3c135760086a580a7841720af3d034832bdef95                                                                 0.0s
+ => => extracting sha256:0478569e858e7b6eb1130889b9be06b1e81383838634c047685b2d68816eba81                                                                 0.0s
+ => => extracting sha256:76225461b7d3207712ea9bcc97711e397bdb9df17960dc349ff0486cce38b75e                                                                 0.0s
+ => => extracting sha256:c06193164a252df3a3a1bc59cd254766ea522e78d5d1cb136e7e63c5b57b781b                                                                 0.0s
+ => => extracting sha256:3fe5ab3f861484e72b05fcb727f2082cf06a641349ffaf604f1f23c2628aef84                                                                 0.0s
+ => [internal] load build context                                                                                                                         0.1s
+ => => transferring context: 4.49kB                                                                                                                       0.0s
+ => [2/6] COPY favicon.ico /usr/share/nginx/html/favicon.ico                                                                                              0.7s
+ => [3/6] COPY index.html /usr/share/nginx/html/index.html                                                                                                0.1s
+ => [4/6] COPY script.js /usr/share/nginx/html/script.js                                                                                                  0.1s
+ => [5/6] COPY style.css /usr/share/nginx/html/style.css                                                                                                  0.1s
+ => [6/6] COPY taxCalculator.js /usr/share/nginx/html/taxCalculator.js                                                                                    0.1s
+ => exporting to image                                                                                                                                    0.7s
+ => => exporting layers                                                                                                                                   0.4s
+ => => exporting manifest sha256:c573e6e18ef26a43450747b08ae424f8ba50c0d78f10ab8db4ad851b30ea48ad                                                         0.0s
+ => => exporting config sha256:4799e6afc5e101d0aab6458e2d2b6689a464c7ce7d41ea77929c838791960fdb                                                           0.0s
+ => => exporting attestation manifest sha256:9749c224e5ac36f1efe7d1bff2a6f6268265a1b70ac7b64a92fdef5da2d75d18                                             0.0s
+ => => exporting manifest list sha256:815970010d5ab1a42c5c1247f18a32363a76a837aa7340a2157836f87ebbb55c                                                    0.0s
+ => => naming to docker.io/library/tax-calculator:latest                                                                                                  0.0s
+ => => unpacking to docker.io/library/tax-calculator:latest                                                                                               0.2s
+PS C:\Users\Talal Afzaal\Desktop\Coursera Final Projects\tax-calculator-main> 
