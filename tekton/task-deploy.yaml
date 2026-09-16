@@ -1,0 +1,31 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: deploy-to-code-engine
+spec:
+  params:
+    - name: image-url
+      type: string
+    - name: app-name
+      type: string
+      default: "taxcalculator-app"
+  steps:
+    - name: deploy
+      image: icr.io/codeengine/ibmcloud
+      script: |
+        #!/bin/sh
+        set -e
+        ibmcloud login --apikey "$IBMCLOUD_API_KEY" -r "$IBMCLOUD_REGION"
+        ibmcloud ce project select --name taxcalculator-project
+        ibmcloud ce application update --name $(params.app-name) \
+          --image $(params.image-url) || \
+        ibmcloud ce application create --name $(params.app-name) \
+          --image $(params.image-url) --registry-secret icr-secret --port 8080
+      env:
+        - name: IBMCLOUD_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: ibmcloud-apikey
+              key: apikey
+        - name: IBMCLOUD_REGION
+          value: "us-south"

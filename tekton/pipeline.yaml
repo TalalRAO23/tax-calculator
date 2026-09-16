@@ -1,0 +1,52 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: taxcalculator-pipeline
+spec:
+  params:
+    - name: repo-url
+      type: string
+    - name: image-url
+      type: string
+  workspaces:
+    - name: pipeline-ws
+  tasks:
+    - name: fetch-repo
+      taskRef:
+        name: git-clone
+      workspaces:
+        - name: output
+          workspace: pipeline-ws
+      params:
+        - name: url
+          value: $(params.repo-url)
+
+    - name: run-tests
+      taskRef:
+        name: run-tests
+      runAfter:
+        - fetch-repo
+      workspaces:
+        - name: source
+          workspace: pipeline-ws
+
+    - name: build-push
+      taskRef:
+        name: build-push
+      runAfter:
+        - run-tests
+      workspaces:
+        - name: source
+          workspace: pipeline-ws
+      params:
+        - name: image-url
+          value: $(params.image-url)
+
+    - name: deploy
+      taskRef:
+        name: deploy-to-code-engine
+      runAfter:
+        - build-push
+      params:
+        - name: image-url
+          value: $(params.image-url)

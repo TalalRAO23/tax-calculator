@@ -1,0 +1,22 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: build-push
+spec:
+  params:
+    - name: image-url
+      description: "Full image reference, e.g. us.icr.io/<namespace>/taxcalculator:v1"
+      type: string
+  workspaces:
+    - name: source
+  steps:
+    - name: build-and-push
+      image: quay.io/buildah/stable
+      workingDir: $(workspaces.source.path)
+      securityContext:
+        privileged: true
+      script: |
+        #!/bin/sh
+        set -e
+        buildah bud -t $(params.image-url) .
+        buildah push $(params.image-url)

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tax Calculator</title>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 480px; margin: 60px auto; padding: 0 20px; }
+  h1 { color: #2c3e50; }
+  input, button { padding: 10px; font-size: 16px; width: 100%; box-sizing: border-box; margin-top: 8px; }
+  button { background: #2c7be5; color: white; border: none; cursor: pointer; margin-top: 16px; }
+  #result { margin-top: 20px; padding: 15px; background: #f4f6f8; border-radius: 6px; display: none; }
+</style>
+</head>
+<body>
+  <h1>Tax Calculator</h1>
+  <label for="income">Annual Income</label>
+  <input type="number" id="income" placeholder="e.g. 50000" min="0">
+  <button id="calcBtn">Calculate Tax</button>
+
+  <div id="result"></div>
+
+  <script>
+    document.getElementById('calcBtn').addEventListener('click', async () => {
+      const income = document.getElementById('income').value;
+      const res = await fetch('/calculate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ income })
+      });
+      const data = await res.json();
+      const resultDiv = document.getElementById('result');
+      resultDiv.style.display = 'block';
+      if (res.ok) {
+        resultDiv.innerHTML = `<strong>Tax:</strong> ${data.tax}<br><strong>Net Income:</strong> ${data.netIncome}`;
+      } else {
+        resultDiv.innerHTML = `<span style="color:red">${data.error}</span>`;
+      }
+    });
+  </script>
+</body>
+</html>
